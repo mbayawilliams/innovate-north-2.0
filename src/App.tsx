@@ -1,10 +1,17 @@
-import "./App.css";
+import { Routes, Route } from "react-router";
+import Home from "./pages/Home";
+import Register from "./pages/Register";
+import { Header } from "./components/Header";
 
 function App() {
   return (
-    <div>
-      <h1 className="text-red-600">Hello</h1>
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="register" element={<Register />} />
+      </Routes>
+    </>
   );
 }
 
