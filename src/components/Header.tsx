@@ -25,7 +25,6 @@ const navItems = [
   { title: "About", href: "/#about", id: "about" },
   { title: "Participation", href: "/#participation", id: "participation" },
   { title: "Schedule", href: "/#schedule", id: "schedule" },
-  { title: "Price", href: "/#price", id: "price" },
   { title: "Partners", href: "/#partners", id: "partners" },
 ];
 
@@ -128,34 +127,63 @@ export function Header() {
   React.useEffect(() => {
     if (!isHomePage) return;
 
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) return;
+
+    const section = document.getElementById(hash);
+    if (!section) return;
+
+    const headerOffset = 96;
+
+    const scrollToSection = () => {
+      const sectionTop =
+        section.getBoundingClientRect().top + window.scrollY - headerOffset;
+
+      window.scrollTo({
+        top: sectionTop,
+        behavior: "smooth",
+      });
+
+      setActiveSection(hash);
+    };
+
+    // Delay ensures DOM is fully ready after route change
+    setTimeout(scrollToSection, 50);
+  }, [location.pathname]);
+
+  React.useEffect(() => {
+    if (!isHomePage) return;
+
     const sections = navItems
       .map((item) => document.getElementById(item.id))
       .filter((el): el is HTMLElement => Boolean(el));
 
     if (!sections.length) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+    const updateActiveSection = () => {
+      const headerOffset = 120;
+      const scrollPosition = window.scrollY + headerOffset;
 
-        if (visibleEntries.length) {
-          const mostVisible = visibleEntries.sort(
-            (a, b) => b.intersectionRatio - a.intersectionRatio,
-          )[0];
+      let currentSection = sections[0]?.id ?? "home";
 
-          setActiveSection(mostVisible.target.id);
+      for (const section of sections) {
+        if (scrollPosition >= section.offsetTop) {
+          currentSection = section.id;
         }
-      },
-      {
-        root: null,
-        rootMargin: "-18% 0px -62% 0px",
-        threshold: [0.15, 0.3, 0.5, 0.7],
-      },
-    );
+      }
 
-    sections.forEach((section) => observer.observe(section));
+      setActiveSection(currentSection);
+    };
 
-    return () => observer.disconnect();
+    updateActiveSection();
+
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
   }, [isHomePage]);
 
   const handleMobileClose = () => setIsOpen(false);
@@ -262,6 +290,8 @@ export function Header() {
                                 navigationMenuTriggerStyle(),
                                 "relative h-10 rounded-xl bg-transparent px-4 text-sm font-medium transition-all duration-300",
                                 "hover:bg-white/80 hover:text-slate-900",
+                                "focus:bg-transparent focus:text-inherit focus:outline-none",
+                                "focus-visible:bg-transparent focus-visible:outline-none focus-visible:ring-0",
                                 isActive
                                   ? "text-slate-950"
                                   : "text-slate-600 hover:text-slate-900",
