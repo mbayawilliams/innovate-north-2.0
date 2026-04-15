@@ -1,5 +1,4 @@
 import About from "@/components/About";
-import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Participation from "@/components/Participation";
 import Partners from "@/components/Partners";
@@ -13,7 +12,6 @@ const Home = () => {
       <Participation />
       <ScheduleAndPrizes />
       <Partners />
-      <Footer />
     </div>
   );
 };
