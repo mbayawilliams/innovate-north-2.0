@@ -260,7 +260,7 @@ export function Header() {
                               }
                               className={cn(
                                 navigationMenuTriggerStyle(),
-                                "relative h-10 rounded-2xl bg-transparent px-4 text-sm font-medium transition-all duration-300",
+                                "relative h-10 rounded-xl bg-transparent px-4 text-sm font-medium transition-all duration-300",
                                 "hover:bg-white/80 hover:text-slate-900",
                                 isActive
                                   ? "text-slate-950"
@@ -276,7 +276,7 @@ export function Header() {
                                   <>
                                     <motion.span
                                       layoutId="desktopActiveBg"
-                                      className="absolute inset-0 rounded-2xl bg-linear-to-b from-white to-slate-50 shadow-[0_4px_16px_rgba(15,23,42,0.08)]"
+                                      className="absolute inset-0 rounded-xl bg-linear-to-b from-white to-slate-50 shadow-[0_4px_16px_rgba(15,23,42,0.08)]"
                                       transition={{
                                         type: "spring",
                                         stiffness: 380,
