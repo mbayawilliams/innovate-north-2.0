@@ -38,7 +38,7 @@ const Register: React.FC = () => {
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
             Register for{" "}
             <span className="bg-linear-to-r from-[#160E8B] via-[rgba(22,14,139,0.88)] to-[rgba(22,14,139,0.68)] bg-clip-text text-transparent">
-              Innovate North
+              Innovate North 2.0
             </span>
           </h1>
 

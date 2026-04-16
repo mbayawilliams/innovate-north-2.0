@@ -14,6 +14,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+import { useLocation } from "react-router";
+
 const easeSmooth = [0.22, 1, 0.36, 1] as const;
 
 const containerVariants: Variants = {
@@ -98,6 +100,31 @@ function InsightCard({
 }
 
 const Hero: React.FC = () => {
+  const location = useLocation();
+
+  const handleScrollToSection = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string,
+  ) => {
+    if (location.pathname !== "/") return;
+
+    e.preventDefault();
+
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    const headerOffset = 96;
+
+    const top =
+      section.getBoundingClientRect().top + window.scrollY - headerOffset;
+
+    window.history.replaceState(null, "", `/#${sectionId}`);
+
+    window.scrollTo({
+      top,
+      behavior: "smooth",
+    });
+  };
   return (
     <section
       className="relative -mt-24 overflow-hidden bg-[linear-gradient(180deg,#fbfbfc_0%,#f6f7ff_34%,#ececff_100%)] pt-28 sm:-mt-28 sm:pt-32 lg:-mt-32 lg:min-h-screen lg:pt-36"
@@ -191,7 +218,10 @@ const Hero: React.FC = () => {
                 </Button>
               </Link>
 
-              <Link to="/#about">
+              <Link
+                to="/#about"
+                onClick={(e) => handleScrollToSection(e, "about")}
+              >
                 <Button
                   variant="outline"
                   className="h-11 rounded-full border-[rgba(22,14,139,0.16)] bg-white/65 px-6 text-sm font-medium text-[#160E8B] backdrop-blur-xl hover:bg-white"
