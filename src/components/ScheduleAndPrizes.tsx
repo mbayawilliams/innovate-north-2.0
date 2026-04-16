@@ -60,25 +60,25 @@ const fadeRight: Variants = {
   },
 };
 
-type DayCardProps = {
-  day: string;
-  title: string;
-};
+// type DayCardProps = {
+//   day: string;
+//   title: string;
+// };
 
-function DayCard({ day, title }: DayCardProps) {
-  return (
-    <motion.div variants={fadeUp} transition={{ duration: 0.22 }}>
-      <Card className="h-full rounded-[1.5rem] border border-white/10 bg-[#1b31ef] text-white shadow-[0_18px_40px_rgba(24,39,255,0.18)]">
-        <CardContent className="p-5 sm:p-6">
-          <p className="text-sm font-medium text-white/75">{day}</p>
-          <h4 className="mt-3 text-lg font-semibold leading-snug tracking-tight sm:text-xl">
-            {title}
-          </h4>
-        </CardContent>
-      </Card>
-    </motion.div>
-  );
-}
+// function DayCard({ day, title }: DayCardProps) {
+//   return (
+//     <motion.div variants={fadeUp} transition={{ duration: 0.22 }}>
+//       <Card className="h-full rounded-[1.5rem] border border-white/10 bg-[#1b31ef] text-white shadow-[0_18px_40px_rgba(24,39,255,0.18)]">
+//         <CardContent className="p-5 sm:p-6">
+//           <p className="text-sm font-medium text-white/75">{day}</p>
+//           <h4 className="mt-3 text-lg font-semibold leading-snug tracking-tight sm:text-xl">
+//             {title}
+//           </h4>
+//         </CardContent>
+//       </Card>
+//     </motion.div>
+//   );
+// }
 
 type PrizeCardProps = {
   place: string;
@@ -118,10 +118,11 @@ function PrizeCard({ place, amount, icon, className }: PrizeCardProps) {
 }
 
 const scheduleItems = [
-  "Call for Application: 30th December 2024 - 17th January 2025",
-  "Selection: 17th January 2025",
-  "Notification: 20th January 2025",
-  "Hackathon: 27th - 30th January 2025",
+  "Call for Application: 13 April 2026 - 30th April  2026",
+  "Selection: 5th May 2026",
+  "Notification: 5th  May  2026",
+  "Policy Dialogue: 15th June 2026",
+  "Hackathon: 16th -18th June 2026",
 ];
 
 const ScheduleAndPrizes: React.FC = () => {
@@ -183,25 +184,60 @@ const ScheduleAndPrizes: React.FC = () => {
             <motion.div variants={fadeRight}>
               <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white/85 backdrop-blur-sm">
                 <ArrowRight className="h-4 w-4" />
-                4-Day Experience
+                Judging Criteria
               </div>
 
               <h2 className="mt-6 text-4xl font-semibold uppercase tracking-tight text-white sm:text-5xl">
                 <span className="block text-transparent [-webkit-text-stroke:1.5px_white]">
-                  4 Days
+                  How You’re
                 </span>
-                <span className="mt-1 block text-white">Hackathon</span>
+                <span className="mt-1 block text-white">Evaluated</span>
               </h2>
 
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                <DayCard day="Day 1" title="Kickoff and Orientation" />
-                <DayCard day="Day 2" title="Building and Collaborating" />
-                <DayCard
-                  day="Day 3"
-                  title="Hacking Time and Mock Presentation"
-                />
-                <DayCard day="Day 4" title="Presentation and Judging" />
+              <div className="mt-8 space-y-4">
+                {[
+                  {
+                    title: "Practicality",
+                    desc: "Does the solution effectively solve a real problem within the selected sector?",
+                  },
+                  {
+                    title: "Sustainability",
+                    desc: "Can the solution realistically be maintained and scaled over time?",
+                  },
+                  {
+                    title: "Accessibility",
+                    desc: "Is the solution inclusive and impactful, especially for underserved communities?",
+                  },
+                  {
+                    title: "Originality",
+                    desc: "How innovative is the idea, and how does it stand out from existing solutions?",
+                  },
+                ].map((item) => (
+                  <motion.div
+                    key={item.title}
+                    variants={fadeUp}
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2 }}
+                    className="rounded-2xl border border-white/8 bg-white/4 px-5 py-5 backdrop-blur-sm"
+                  >
+                    <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-white/70">
+                      {item.title}
+                    </h4>
+                    <p className="mt-2 text-sm leading-6 text-white/85 sm:text-base">
+                      {item.desc}
+                    </p>
+                  </motion.div>
+                ))}
+
+                {/* Note */}
               </div>
+            </motion.div>
+            <motion.div
+              variants={fadeUp}
+              className="rounded-2xl border border-white/10 bg-white/1 px-5 py-4 text-sm text-white/75"
+            >
+              Note: All shortlisted teams will be notified of their
+              participation before the hackathon.
             </motion.div>
           </div>
 

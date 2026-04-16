@@ -60,12 +60,12 @@ function FocusCard({ title, icon, className }: FocusCardProps) {
   return (
     <motion.div variants={fadeUp} className={cn("h-full", className)}>
       <Card className="group h-full overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/10 text-white shadow-none backdrop-blur-sm transition-all duration-300 hover:bg-white/14">
-        <CardContent className="flex h-full min-h-30 flex-col justify-between p-5 sm:p-6">
+        <CardContent className="flex h-full min-h-25 flex-col justify-between p-3 sm:p-5">
           <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-white">
             {icon}
           </div>
 
-          <div className="mt-8 flex items-end justify-between gap-3">
+          <div className="mt-5 flex items-end justify-between gap-3">
             <h3 className="max-w-48 text-lg font-semibold leading-tight tracking-tight sm:text-[1.65rem]">
               {title}
             </h3>
@@ -126,8 +126,8 @@ const About: React.FC = () => {
 
               <p>
                 The event brings together a diverse group of young innovators,
-                technologists, and community leaders to develop impact solutions
-                that focus on 5 critical areas.
+                technologists, and community leaders to develop impactful
+                solutions that focus on critical areas.
               </p>
             </div>
           </motion.div>
@@ -156,32 +156,20 @@ const About: React.FC = () => {
               icon={<Globe className="h-6 w-6" />}
             />
 
+            <FocusCard
+              title="Circular Economy"
+              icon={<TrendingUp className="h-6 w-6" />}
+            />
+
+            <FocusCard
+              title="GovTech"
+              icon={<Sparkles className="h-6 w-6" />}
+            />
             <motion.div variants={fadeUp} className="sm:col-span-2">
-              <Card className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/10 text-white shadow-none backdrop-blur-sm">
-                <CardContent className="flex flex-col gap-5 p-5 sm:p-6 lg:flex-row lg:items-center lg:justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-white">
-                      <TrendingUp className="h-6 w-6" />
-                    </div>
-
-                    <div>
-                      <p className="text-sm font-medium text-white/70">
-                        Final focus area
-                      </p>
-                      <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">
-                        Circular Economy
-                      </h3>
-                    </div>
-                  </div>
-
-                  <div className="h-px w-full bg-white/10 lg:hidden" />
-
-                  <p className="max-w-md text-sm leading-7 text-white/75">
-                    Solutions that rethink production, sustainability, reuse,
-                    efficiency, and smarter community systems.
-                  </p>
-                </CardContent>
-              </Card>
+              <FocusCard
+                title="Climate Tech"
+                icon={<Leaf className="h-6 w-6" />}
+              />
             </motion.div>
           </motion.div>
         </motion.div>

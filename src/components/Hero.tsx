@@ -190,7 +190,7 @@ const Hero: React.FC = () => {
               className="inline-flex items-center gap-2 rounded-full border border-[rgba(22,14,139,0.18)] bg-white/70 px-3.5 py-1.5 text-xs font-medium text-[#160E8B] shadow-[0_10px_30px_rgba(22,14,139,0.08)] backdrop-blur-xl sm:text-sm"
             >
               <Sparkles className="h-4 w-4" />
-              Innovate North Hackathon 2.0
+              Innovate North 2.0 • Hack for Progress
             </motion.div>
 
             <motion.div variants={fadeUp} className="mt-5">
@@ -244,7 +244,10 @@ const Hero: React.FC = () => {
                     Date
                   </p>
                   <p className="text-sm font-semibold text-slate-900">
-                    27th - 30th January 2025
+                    16th – 18th June 2026
+                  </p>
+                  <p className="mt-3 text-xs font-medium text-[#160E8B] sm:text-sm">
+                    Applications open April 13 – April 30, 2026
                   </p>
                 </div>
               </div>
@@ -294,14 +297,14 @@ const Hero: React.FC = () => {
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <InsightCard
-                  title="Real-world impact"
-                  description="Build solutions around meaningful local problems."
+                  title="Sector-focused innovation"
+                  description="Work across agriculture, education, digital trade, climate tech, and more."
                   icon={<Lightbulb className="h-5 w-5" />}
                 />
 
                 <InsightCard
-                  title="Modern product thinking"
-                  description="Work across AI, civic-tech, and digital services."
+                  title="From idea to execution"
+                  description="Develop concepts, prototypes, or early-stage solutions with real potential."
                   icon={<Cpu className="h-5 w-5" />}
                 />
               </div>

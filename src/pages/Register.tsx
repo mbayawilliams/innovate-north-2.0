@@ -17,7 +17,7 @@ const Register: React.FC = () => {
   const [hasError, setHasError] = React.useState(false);
 
   const formUrl =
-    "https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true";
+    "https://docs.google.com/forms/d/e/1FAIpQLSeM8xbz4ll8gC_77OBC8ZDOv9I1Mb2O_lI_NCgZTkBJaspR0Q/viewform?embedded=true";
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
